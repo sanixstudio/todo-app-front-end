@@ -23,7 +23,9 @@ export const TodoList = () => {
                     isCompleted: check,
                 }
             );
-            window.location.reload(false);
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 500);
         } catch (err) {
             console.log(err.message);
         }
@@ -35,7 +37,9 @@ export const TodoList = () => {
             axios.delete(
                 `https://to-do-appv1.herokuapp.com/api/todos/delete/${e.target.id}`
             );
-            window.location.reload(false);
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 500);
         } catch (err) {
             console.log(err.message);
         }

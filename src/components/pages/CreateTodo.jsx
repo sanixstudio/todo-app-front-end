@@ -26,7 +26,9 @@ export const CreateTodo = () => {
                         isCompleted: false,
                     }
                 );
-                history.push("/");
+                setTimeout(() => {
+                    history.push("/");
+                }, 200);
             } catch (err) {
                 console.log(err.message);
             }

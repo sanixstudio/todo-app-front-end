@@ -35,9 +35,11 @@ export const EditTodo = () => {
                     isCompleted: false,
                 }
             );
+        }
+        setTimeout(() => {
             history.push("/");
             window.location.reload(false);
-        }
+        }, 1000);
     };
 
     // Handle cancel
