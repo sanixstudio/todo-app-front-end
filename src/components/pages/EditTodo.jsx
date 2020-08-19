@@ -11,7 +11,7 @@ export const EditTodo = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios.get(
-                `http://localhost:4000/api/todos/find/${id}`
+                `https://to-do-appv1.herokuapp.com/api/todos/find/${id}`
             );
             setCurrentText(result.data.text);
         };
@@ -28,10 +28,13 @@ export const EditTodo = () => {
         if (newTodo === "") {
             document.querySelector(".alert").style.opacity = 1;
         } else {
-            axios.put(`http://localhost:4000/api/todos/update/${id}`, {
-                text: newTodo,
-                isCompleted: false,
-            });
+            axios.put(
+                `https://to-do-appv1.herokuapp.com/api/todos/update/${id}`,
+                {
+                    text: newTodo,
+                    isCompleted: false,
+                }
+            );
             history.push("/");
             window.location.reload(false);
         }

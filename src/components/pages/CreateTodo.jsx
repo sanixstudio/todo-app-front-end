@@ -19,10 +19,13 @@ export const CreateTodo = () => {
             }, 7000);
         } else {
             try {
-                await axios.post("http://localhost:4000/api/todos/add", {
-                    text: newTodo,
-                    isCompleted: false,
-                });
+                await axios.post(
+                    "https://to-do-appv1.herokuapp.com/api/todos/add",
+                    {
+                        text: newTodo,
+                        isCompleted: false,
+                    }
+                );
                 history.push("/");
             } catch (err) {
                 console.log(err.message);
