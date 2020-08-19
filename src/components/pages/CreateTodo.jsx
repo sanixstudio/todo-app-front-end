@@ -28,7 +28,7 @@ export const CreateTodo = () => {
                 );
                 setTimeout(() => {
                     history.push("/");
-                }, 500);
+                }, 2000);
             } catch (err) {
                 console.log(err.message);
             }
