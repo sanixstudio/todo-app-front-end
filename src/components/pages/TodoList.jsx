@@ -62,7 +62,9 @@ export const TodoList = () => {
                     <div className="col">
                         <ul className="list-group my-5">
                             {loading === true ? (
-                                <div className="loader"></div>
+                                <li className="d-flex loading-li justify-content-center align-items-center">
+                                    <div className="loader"></div>
+                                </li>
                             ) : (
                                 todos.map((todo) => (
                                     <li
