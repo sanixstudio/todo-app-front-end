@@ -39,7 +39,7 @@ export const TodoList = () => {
             );
             setTimeout(() => {
                 window.location.reload(false);
-            }, 2000);
+            }, 1500);
         } catch (err) {
             console.log(err.message);
         }
