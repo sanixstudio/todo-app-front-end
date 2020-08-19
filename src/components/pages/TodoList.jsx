@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const TodoList = () => {
     const [todos, setTodos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // check if isCompleted or not
     const handleCheck = async (e) => {
@@ -47,6 +48,7 @@ export const TodoList = () => {
                 "https://to-do-appv1.herokuapp.com/api/todos/all"
             );
             setTodos(todos.data);
+            setLoading(false);
         };
         fetchTodos();
     }, []);
@@ -59,38 +61,44 @@ export const TodoList = () => {
                 <div className="row">
                     <div className="col">
                         <ul className="list-group my-5">
-                            {todos.map((todo) => (
-                                <li
-                                    className="list-group-item todo-bg"
-                                    key={todo._id}
-                                >
-                                    <input
-                                        type="checkbox"
-                                        className="mr-4 large-check-box"
-                                        checked={todo.isCompleted}
-                                        onChange={handleCheck}
-                                        id={todo._id}
-                                        data={todo.text}
-                                    />
-                                    <span
-                                        className={
-                                            todo.isCompleted ? "checked" : ""
-                                        }
+                            {loading === true ? (
+                                <div className="loader"></div>
+                            ) : (
+                                todos.map((todo) => (
+                                    <li
+                                        className="list-group-item todo-bg"
+                                        key={todo._id}
                                     >
-                                        {todo.text}
-                                    </span>
+                                        <input
+                                            type="checkbox"
+                                            className="mr-4 large-check-box"
+                                            checked={todo.isCompleted}
+                                            onChange={handleCheck}
+                                            id={todo._id}
+                                            data={todo.text}
+                                        />
+                                        <span
+                                            className={
+                                                todo.isCompleted
+                                                    ? "checked"
+                                                    : ""
+                                            }
+                                        >
+                                            {todo.text}
+                                        </span>
 
-                                    <i
-                                        className="fa controls fa-trash float-right text-danger"
-                                        id={todo._id}
-                                        onClick={handleDelete}
-                                    ></i>
+                                        <i
+                                            className="fa controls fa-trash float-right text-danger"
+                                            id={todo._id}
+                                            onClick={handleDelete}
+                                        ></i>
 
-                                    <Link to={`/todo/edit/${todo._id}`}>
-                                        <i className="fa controls fa-edit float-right mr-3 text-secondary"></i>
-                                    </Link>
-                                </li>
-                            ))}
+                                        <Link to={`/todo/edit/${todo._id}`}>
+                                            <i className="fa controls fa-edit float-right mr-3 text-secondary"></i>
+                                        </Link>
+                                    </li>
+                                ))
+                            )}
                         </ul>
                     </div>
                 </div>
