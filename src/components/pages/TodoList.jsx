@@ -15,10 +15,13 @@ export const TodoList = () => {
         }
         console.log(check);
         try {
-            axios.put(`http://localhost:4000/api/todos/update/${e.target.id}`, {
-                text: e.target.attributes.data.value,
-                isCompleted: check,
-            });
+            axios.put(
+                `https://to-do-appv1.herokuapp.com/api/todos/update/${e.target.id}`,
+                {
+                    text: e.target.attributes.data.value,
+                    isCompleted: check,
+                }
+            );
             window.location.reload(false);
         } catch (err) {
             console.log(err.message);
@@ -29,7 +32,7 @@ export const TodoList = () => {
     const handleDelete = (e) => {
         try {
             axios.delete(
-                `http://localhost:4000/api/todos/delete/${e.target.id}`
+                `https://to-do-appv1.herokuapp.com/api/todos/delete/${e.target.id}`
             );
             window.location.reload(false);
         } catch (err) {
@@ -41,7 +44,7 @@ export const TodoList = () => {
     useEffect(() => {
         const fetchTodos = async () => {
             const todos = await axios.get(
-                "http://localhost:4000/api/todos/all"
+                "https://to-do-appv1.herokuapp.com/api/todos/all"
             );
             setTodos(todos.data);
         };
