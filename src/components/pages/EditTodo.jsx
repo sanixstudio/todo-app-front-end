@@ -23,12 +23,12 @@ export const EditTodo = () => {
     };
 
     // Handle submit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (newTodo === "") {
             document.querySelector(".alert").style.opacity = 1;
         } else {
-            axios.put(
+            await axios.put(
                 `https://to-do-appv1.herokuapp.com/api/todos/update/${id}`,
                 {
                     text: newTodo,
@@ -36,10 +36,12 @@ export const EditTodo = () => {
                 }
             );
         }
-        setTimeout(() => {
-            history.push("/");
-            window.location.reload(false);
-        }, 1500);
+        // setTimeout(() => {
+        //     history.push("/");
+        //     window.location.reload(false);
+        // }, 1500);
+        history.push("/");
+        window.location.reload(false);
     };
 
     // Handle cancel

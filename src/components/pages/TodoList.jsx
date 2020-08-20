@@ -16,30 +16,32 @@ export const TodoList = () => {
         }
         console.log(check);
         try {
-            axios.put(
+            await axios.put(
                 `https://to-do-appv1.herokuapp.com/api/todos/update/${e.target.id}`,
                 {
                     text: e.target.attributes.data.value,
                     isCompleted: check,
                 }
             );
-            setTimeout(() => {
-                window.location.reload(false);
-            }, 2000);
+            // setTimeout(() => {
+            //     window.location.reload(false);
+            // }, 2000);
+            window.location.reload(false);
         } catch (err) {
             console.log(err.message);
         }
     };
 
     // delete todo item
-    const handleDelete = (e) => {
+    const handleDelete = async (e) => {
         try {
-            axios.delete(
+            await axios.delete(
                 `https://to-do-appv1.herokuapp.com/api/todos/delete/${e.target.id}`
             );
-            setTimeout(() => {
-                window.location.reload(false);
-            }, 1500);
+            // setTimeout(() => {
+            //     window.location.reload(false);
+            // }, 1500);
+            window.location.reload(false);
         } catch (err) {
             console.log(err.message);
         }
